@@ -1,0 +1,51 @@
+<div class="container mt-5">
+
+  <div *ngIf="confirmationMessage" class="alert alert-success text-center p-5">
+    <h1>Success!</h1>
+    <p class="lead">{{ confirmationMessage }}</p>
+    <a routerLink="/" class="btn btn-primary mt-3">Back to Store</a>
+  </div>
+
+  <div *ngIf="selectedProduct && !confirmationMessage" class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h3>Review Your Order</h3>
+    </div>
+    
+    <div class="card-body">
+      <div class="row">
+        
+        <div class="col-md-5">
+          <img [src]="selectedProduct.image" alt="{{ selectedProduct.name }}" class="img-fluid rounded">
+        </div>
+
+        <div class="col-md-7">
+          <h2 class="mt-3">{{ selectedProduct.name }}</h2>
+          <h4 class="text-primary">${{ selectedProduct.price }}</h4>
+          <hr>
+          <p class="text-muted">{{ selectedProduct.description }}</p>
+
+          <div class="mt-5">
+            <button class="btn btn-success btn-lg w-100" 
+                    (click)="submitOrder()" 
+                    [disabled]="isSubmitting">
+              
+              <span *ngIf="!isSubmitting">Submit Order</span>
+              <span *ngIf="isSubmitting">Processing...</span>
+            
+            </button>
+            
+            <a routerLink="/" class="btn btn-outline-secondary w-100 mt-2">Cancel</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!selectedProduct && !confirmationMessage" class="text-center mt-5">
+    <h3>No product selected.</h3>
+    <p>Please go back and select an item.</p>
+    <a routerLink="/" class="btn btn-primary">Go to Home</a>
+  </div>
+
+</div>

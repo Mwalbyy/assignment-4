@@ -1,8 +1,9 @@
 <div class="container mt-5">
-  <h2 class="mb-4 text-center">All Products</h2>
+  <h2 class="mb-4 text-center">Marcus Walby's Used Computer Peripheral Depo</h2>
 
   <div class="row">
-    
+
+    <!-- loop for creating each of the products cards  -->
     <div class="col-md-3 mb-4" *ngFor="let product of products">
       
       <div class="card h-100 shadow-sm">
@@ -15,7 +16,7 @@
           <div class="mt-auto">
             <h4 class="text-primary">${{ product.price }}</h4>
             <button class="btn btn-success w-100" (click)="onPurchase(product)">
-              Add to cart
+              Purchase
             </button>
           </div>
         </div>
